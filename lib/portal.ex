@@ -3,19 +3,6 @@ defmodule Portal do
   Documentation for Portal.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Portal.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
   defstruct [:left, :right]
 
   @doc """
@@ -44,6 +31,13 @@ defmodule Portal do
 
     # Let's return the portal itself
     portal
+  end
+
+  @doc """
+  Shoots a new door with the given `color`.
+  """
+  def shoot(color) do
+    Supervisor.start_child(Portal.Supervisor, [color])
   end
 end
 
